@@ -5,6 +5,38 @@ body {
   width: 100%;
   box-sizing: border-box; }
 
+.ribbon {
+  padding: 0.5rem 0;
+  background-color: #008080; }
+
+.header {
+  padding: 1rem 0;
+  text-align: center; }
+
+.admin-wrapper {
+  width: 100%;
+  margin: auto;
+  background-color: #ecf1f0;
+  padding: 1rem; }
+  @media only screen and (min-width: 1024px) {
+    .admin-wrapper {
+      max-width: 1024px; } }
+
 /*Formulario*/
+.form-group .relative-element label {
+  width: 100%;
+  color: #008080; }
+.form-group .relative-element input:not([type="file"]) {
+  width: 100%;
+  border: 2px solid #008080; }
+  .form-group .relative-element input:not([type="file"]):focus {
+    outline: none; }
+.form-group .relative-element textarea {
+  resize: none;
+  width: 100%;
+  height: 150px;
+  border: 2px solid #008080; }
+  .form-group .relative-element textarea:focus {
+    outline: none; }
 
 /*# sourceMappingURL=main.css.map */

@@ -38,3 +38,21 @@ function enviaDatos(e){
    var submit = document.querySelector('[type="submit"]');
    ingresarPlato(nombre, desc, precio);
 }
+
+
+
+// Vidualizar Imagen
+function visualizarImagen(){
+   let preview = document.querySelector('img');
+   let archivo = document.querySelector('input[type="file"]').files[0];
+   var lector = new FileReader();
+
+   lector.onloadend = function(){
+      preview.src = lector.result;
+   }
+   if (archivo) {
+      lector.readAsDataURL(archivo);  
+   }else{
+      preview.src = "";
+   }
+}

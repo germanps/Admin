@@ -10,37 +10,53 @@
    <title>Admin Restaurante</title>
 </head>
 <body>
-   <div class="container-fluid">
-      <h2>Administración <!-- Restaurante --></h2>
+    <div class="ribbon"></div>
+    <div class="container-fluid">
+       <div class="header">
+            <h2>Administración <!-- Restaurante --></h2>
+       </div>
+      
 
       <!-- Subir imagen de cada plato -->
-
-      <div class="row">
-         <div class="col-md">
-             <!-- Formulario para ingresar el nombre, descripción y precio del plato -->
-            <form onsubmit="enviaDatos()">
-               <div class="form-group">
-                  <div class="relative-element">
-                     <label for="nombre">Nombre:</label> 
-                     <input id="nombre" type="text">
-                  </div>
-               </div>
-               <div class="form-group">
-                  <div class="relative-element">
-                     <label for="descripcion:">Descripción:</label>
-                     <textarea id="descripcion"></textarea>
-                  </div>
-               </div>
-               <div class="form-group">
-                  <div class="relative-element">
-                     <label for="precio">Precio:</label> 
-                     <input id="precio" type="text">
-                  </div>
-               </div>
-               <input type="submit" value="Subir">
-            </form>
-         </div>
-      </div>
+        <div class="admin-wrapper">
+            <div class="row">
+                <div class="col-md">
+                    <!-- Formulario para ingresar el nombre, descripción y precio del plato -->
+                    <form onsubmit="enviaDatos()">
+                    <div class="form-group">
+                        <div class="relative-element">
+                            <label for="nombre">Nombre:</label> 
+                            <input id="nombre" type="text">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="relative-element">
+                            <label for="descripcion:">Descripción:</label>
+                            <textarea id="descripcion"></textarea>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="relative-element">
+                            <label for="precio">Precio:</label> 
+                            <input id="precio" type="text">
+                        </div>
+                    </div>
+                    <input type="submit" value="Subir">
+                    </form>
+                </div>
+                <div class="col-md">
+                    <div class="form-group">
+                        <div class="relative-element">
+                            <label for="imagen">Imagen</label>
+                            <input type="file" id="imagen" onchange="visualizarImagen()">
+                        </div>
+                        <div class="relative-element">
+                            <img id="imgPlato" src="#" alt="Imagen del plato" height="300">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
       
    </div>
 </body>
