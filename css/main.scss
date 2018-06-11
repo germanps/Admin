@@ -45,7 +45,9 @@ body{
          &:focus{
             outline: none;
          }
+        
       }
+      
       textarea{
          resize: none;
          width: 100%;
@@ -55,5 +57,14 @@ body{
             outline: none;
          }
       }
-   }
+    }
+    input[type="submit"]{
+        background-color: $teal;
+        border: 2px solid $teal;
+        color: #fff;
+        cursor: pointer;
+        min-width: 100px;
+        outline: 2px solid #fff;
+        outline-offset: -4px;
+    }
 }

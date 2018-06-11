@@ -38,5 +38,13 @@ body {
   border: 2px solid #008080; }
   .form-group .relative-element textarea:focus {
     outline: none; }
+.form-group input[type="submit"] {
+  background-color: #008080;
+  border: 2px solid #008080;
+  color: #fff;
+  cursor: pointer;
+  min-width: 100px;
+  outline: 2px solid #fff;
+  outline-offset: -4px; }
 
 /*# sourceMappingURL=main.css.map */
