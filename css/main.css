@@ -5,9 +5,15 @@ body {
   width: 100%;
   box-sizing: border-box; }
 
+.header-navbar {
+  width: 100%; }
+  .header-navbar img {
+    width: 100%;
+    height: auto; }
+
 .ribbon {
   padding: 0.5rem 0;
-  background-color: #008080; }
+  background-color: #606060; }
 
 .header {
   padding: 1rem 0;
@@ -16,7 +22,7 @@ body {
 .admin-wrapper {
   width: 100%;
   margin: auto;
-  background-color: #ecf1f0;
+  background-color: #f4f4f4;
   padding: 1rem; }
   @media only screen and (min-width: 1024px) {
     .admin-wrapper {
@@ -25,22 +31,22 @@ body {
 /*Formulario*/
 .form-group .relative-element label {
   width: 100%;
-  color: #008080; }
+  color: #606060; }
 .form-group .relative-element input:not([type="file"]) {
   width: 100%;
-  border: 2px solid #008080; }
+  border: 2px solid #606060; }
   .form-group .relative-element input:not([type="file"]):focus {
     outline: none; }
 .form-group .relative-element textarea {
   resize: none;
   width: 100%;
   height: 150px;
-  border: 2px solid #008080; }
+  border: 2px solid #606060; }
   .form-group .relative-element textarea:focus {
     outline: none; }
 .form-group input[type="submit"] {
-  background-color: #008080;
-  border: 2px solid #008080;
+  background-color: #606060;
+  border: 2px solid #606060;
   color: #fff;
   cursor: pointer;
   min-width: 100px;
