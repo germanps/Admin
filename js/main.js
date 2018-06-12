@@ -42,6 +42,10 @@ function enviaDatos(e){
 
 
 // Vidualizar Imagen
+var storage = firebase.storage();
+var storageRef = storage.ref();
+
+
 function visualizarImagen(){
    let preview = document.querySelector('img');
    let archivo = document.querySelector('input[type="file"]').files[0];
@@ -51,7 +55,23 @@ function visualizarImagen(){
       preview.src = lector.result;
    }
    if (archivo) {
-      lector.readAsDataURL(archivo);  
+      lector.readAsDataURL(archivo);
+      //subir al storage
+      var subirImagen = storageRef.child('platos/' + archivo.name).put(archivo);
+      subirImagen.on('state_changed', function(snapshot){
+         //indica los cambios en la carga del archivo
+
+      }, function(error){
+         //en caso de que haya errores
+         console.log('error en la carga de la imagen: ' + error)
+      }, function(){
+         //carga exitosa(obtener la dirección de la imagen
+         subirImagen.snapshot.ref.getDownloadURL()
+            .then(function(downloadURL){
+               console.log(downloadURL);
+            })
+         //console.log(subirImagen.snapshot.downloadURL);
+      })
    }else{
       preview.src = "";
    }
