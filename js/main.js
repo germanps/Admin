@@ -36,7 +36,7 @@ function enviaDatos(e){
    let nombre = document.getElementById('nombre').value;
    let desc = document.getElementById('descripcion').value;
    let precio = document.getElementById('precio').value;
-   let imagen = document.getElementById('direccionImagen');
+   let imagen = document.getElementById('direccionImagen').value;
    let submit = document.querySelector('[type="submit"]');
 
    ingresarPlato(nombre, desc, precio, imagen);
