@@ -24,6 +24,12 @@ var ingresarPlato = function(pNombre, pDescripcion, pPrecio, pdireccion){
 
 
 // 2. Leer Platos
+var imprimirPlatos = function(){
+    var query = database.ref('alimentos');
+    query.on('value', function(snapshot){
+        console.log(snapshot.val());
+    })
+}
 
 
 
@@ -31,6 +37,8 @@ var ingresarPlato = function(pNombre, pDescripcion, pPrecio, pdireccion){
 
 
 
+
+//4. Funciones
 function enviaDatos(e){
    console.log('entra');
    let nombre = document.getElementById('nombre').value;
