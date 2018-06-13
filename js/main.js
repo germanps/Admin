@@ -12,12 +12,13 @@ firebase.initializeApp(config);
 
 // 1. Crear Platos
 var database = firebase.database();
-var ingresarPlato = function(pNombre, pDescripcion, pPrecio){
+var ingresarPlato = function(pNombre, pDescripcion, pPrecio, pdireccion){
    database.ref('alimentos').push({
       nombre: pNombre,
       descripcion: pDescripcion,
       precio: pPrecio,
-      cantidad: 0
+      cantidad: 0,
+      direccion: pdireccion
    })
 }
 
@@ -32,11 +33,13 @@ var ingresarPlato = function(pNombre, pDescripcion, pPrecio){
 
 function enviaDatos(e){
    console.log('entra');
-   var nombre = document.getElementById('nombre').value;
-   var desc = document.getElementById('descripcion').value;
-   var precio = document.getElementById('precio').value;
-   var submit = document.querySelector('[type="submit"]');
-   ingresarPlato(nombre, desc, precio);
+   let nombre = document.getElementById('nombre').value;
+   let desc = document.getElementById('descripcion').value;
+   let precio = document.getElementById('precio').value;
+   let imagen = document.getElementById('direccionImagen');
+   let submit = document.querySelector('[type="submit"]');
+
+   ingresarPlato(nombre, desc, precio, imagen);
 }
 
 
@@ -47,7 +50,7 @@ var storageRef = storage.ref();
 
 
 function visualizarImagen(){
-   let preview = document.querySelector('img');
+   let preview = document.getElementById('imgPlato');
    let archivo = document.querySelector('input[type="file"]').files[0];
    var lector = new FileReader();
 
@@ -69,6 +72,7 @@ function visualizarImagen(){
          subirImagen.snapshot.ref.getDownloadURL()
             .then(function(downloadURL){
                console.log(downloadURL);
+               document.getElementById('direccionImagen').value = downloadURL;
             })
          //console.log(subirImagen.snapshot.downloadURL);
       })
