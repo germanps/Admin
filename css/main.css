@@ -44,13 +44,20 @@ body {
   border: 2px solid #606060; }
   .form-group .relative-element textarea:focus {
     outline: none; }
-.form-group input[type="submit"] {
+.form-group.btn-flex {
+  display: flex;
+  justify-content: space-between; }
+.form-group input[type="submit"],
+.form-group .btn-vermas {
   background-color: #606060;
   border: 2px solid #606060;
   color: #fff;
   cursor: pointer;
   min-width: 100px;
   outline: 2px solid #fff;
-  outline-offset: -4px; }
+  outline-offset: -4px;
+  display: inline-block;
+  text-align: center;
+  text-decoration: none; }
 
 /*# sourceMappingURL=main.css.map */

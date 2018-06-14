@@ -27,7 +27,11 @@ var ingresarPlato = function(pNombre, pDescripcion, pPrecio, pdireccion){
 var imprimirPlatos = function(){
     var query = database.ref('alimentos');
     query.on('value', function(snapshot){
-        console.log(snapshot.val());
+        //console.log(snapshot.val());
+        snapshot.forEach(plato => {
+           console.log(plato.key);
+           console.log(plato.val());
+        });
     })
 }
 

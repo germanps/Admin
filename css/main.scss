@@ -67,7 +67,12 @@ body{
          }
       }
     }
-    input[type="submit"]{
+    &.btn-flex{
+        display: flex;
+        justify-content: space-between;
+    }
+    input[type="submit"],
+    .btn-vermas{
         background-color: $scorpion;
         border: 2px solid $scorpion;
         color: #fff;
@@ -75,5 +80,8 @@ body{
         min-width: 100px;
         outline: 2px solid #fff;
         outline-offset: -4px;
+        display: inline-block;
+        text-align: center;
+        text-decoration: none;
     }
 }
