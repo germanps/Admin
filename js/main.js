@@ -28,10 +28,29 @@ var imprimirPlatos = function(){
     var query = database.ref('alimentos');
     query.on('value', function(snapshot){
         //console.log(snapshot.val());
+        var listadoPlatos = `<ul class="platos-lista">`
         snapshot.forEach(plato => {
-           console.log(plato.key);
-           console.log(plato.val());
+            let image = plato.val().direccion;
+            if (image == undefined) {
+                image = "#";
+            }
+           listadoPlatos += `<li class="platos-lista-item">                         
+                                <h4 class="title">${plato.val().nombre}</h4>
+                                <div class="image">
+                                    <img src="${image}">
+                                </div>
+                                <div class="datos-adicionales">
+                                    <p class="descripcion">${plato.val().descripcion}</p>
+                                    <p class="precio">${plato.val().precio}</p>
+                                    <p class="cantidad">${plato.val().cantidad}</p>
+                                </div>
+                            </li> `
+           //console.log(plato.key);
+           //console.log(plato.val());
         });
+        listadoPlatos += `</ul>`
+        const containerPlatos = document.querySelector('.platos-wrapper');
+        containerPlatos.innerHTML = listadoPlatos;
     })
 }
 
@@ -68,6 +87,7 @@ function visualizarImagen(){
 
    lector.onloadend = function(){
       preview.src = lector.result;
+      preview.style.display = 'block';
    }
    if (archivo) {
       lector.readAsDataURL(archivo);

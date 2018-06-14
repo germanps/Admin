@@ -33,16 +33,34 @@ body{
    margin: auto;
    background-color: $porcelain;
    padding: 1rem;
-   @media only screen and (min-width: 1024px){
+   /* @media only screen and (min-width: 1024px){
       max-width: 1024px;
+   } */
+   min-height: calc(100vh - 200px);
+
+   .platos-wrapper{
+
+        .platos-lista{
+            list-style: none;
+            padding: 0;
+            .platos-lista-item{
+                border-bottom: 1px solid #919191;
+                padding: 1rem 0;
+                p{
+                    margin-bottom: 0;
+                }
+                &:last-child{
+                    border-bottom: none;
+                }
+            }
+        } 
    }
-   
 }
 
 /*Formulario*/
 .form-group{
 
-   .relative-element{
+   .relative-element{ 
 
       label{
          width: 100%;

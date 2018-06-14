@@ -23,10 +23,21 @@ body {
   width: 100%;
   margin: auto;
   background-color: #f4f4f4;
-  padding: 1rem; }
-  @media only screen and (min-width: 1024px) {
-    .admin-wrapper {
-      max-width: 1024px; } }
+  padding: 1rem;
+  /* @media only screen and (min-width: 1024px){
+     max-width: 1024px;
+  } */
+  min-height: calc(100vh - 200px); }
+  .admin-wrapper .platos-wrapper .platos-lista {
+    list-style: none;
+    padding: 0; }
+    .admin-wrapper .platos-wrapper .platos-lista .platos-lista-item {
+      border-bottom: 1px solid #919191;
+      padding: 1rem 0; }
+      .admin-wrapper .platos-wrapper .platos-lista .platos-lista-item p {
+        margin-bottom: 0; }
+      .admin-wrapper .platos-wrapper .platos-lista .platos-lista-item:last-child {
+        border-bottom: none; }
 
 /*Formulario*/
 .form-group .relative-element label {
