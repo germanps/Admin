@@ -16,7 +16,7 @@
     </header>
     <div class="container-fluid">
        <div class="header">
-            <h2>Gestión comercial <!-- Restaurante --></h2>
+            <h4>Gestión comercial <!-- Restaurante --></h4>
        </div>
       
 
@@ -63,9 +63,10 @@
                             <label for="imagen">Imagen</label>
                             <input type="file" id="imagen" onchange="visualizarImagen()">
                         </div>
-                        <div class="relative-element">
+                        <div class="relative-element img-wrapper">
                             <img style="display:none;" id="imgPlato" src="#" alt="Imagen del plato" height="300">
                         </div>
+                        <input type="submit" class="btn-subir-imagen" value="Subir" onclick="subirImagen()">
                     </div>
                 </div>
             </div>

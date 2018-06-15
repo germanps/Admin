@@ -4,8 +4,22 @@ $monza:#dc0028;
 $porcelain: #f4f4f4;
 $scorpion: #606060;
 $teal: #008080;
+$white: #ffffff;
+$vidaloca: #4c851f;
 
 /*Mixins*/
+@mixin btn ($bg, $col){
+    background-color: $bg;
+    border: 2px solid $bg;
+    color: $col;
+    cursor: pointer;
+    min-width: 100px;
+    outline: 2px solid $col;
+    outline-offset: -4px;
+    display: inline-block;
+    text-align: center;
+    text-decoration: none;
+}
 
 /*main.css*/
 body{
@@ -38,19 +52,48 @@ body{
    } */
    min-height: calc(100vh - 200px);
 
+
+    /*Platos*/
    .platos-wrapper{
 
         .platos-lista{
             list-style: none;
             padding: 0;
+            display: flex;
+            flex-wrap: wrap;
             .platos-lista-item{
-                border-bottom: 1px solid #919191;
                 padding: 1rem 0;
-                p{
-                    margin-bottom: 0;
+                display: flex;
+                flex-direction: column;
+                width: 33.33%;
+                min-width: 300px;
+                @media only screen and (max-width: 678px){
+                    &{
+                        margin: auto;
+                        width: 100%;
+                    }
                 }
-                &:last-child{
-                    border-bottom: none;
+
+                .lista-item-wrapper{
+                    width: 95%;
+                    margin: auto;
+                    max-width: 500px;
+                    margin: .5rem auto;
+
+                    .image{
+                        
+                        width: 100%;
+                        margin: auto;
+    
+                        img{
+                            width: 100%;
+                            height: auto;
+                            max-width: 100%;
+                        }
+                    }
+                    p{
+                        margin-bottom: 0;
+                    }
                 }
             }
         } 
@@ -68,7 +111,7 @@ body{
       }
       input:not([type="file"]){
          width: 100%;
-         border: 2px solid $scorpion;
+         border: 1px solid $scorpion;
          &:focus{
             outline: none;
          }
@@ -79,27 +122,34 @@ body{
          resize: none;
          width: 100%;
          height: 150px;
-         border: 2px solid $scorpion;
+         border: 1px solid $scorpion;
          &:focus{
             outline: none;
          }
       }
+
+      &.img-wrapper{
+          margin: 1rem 0;
+      }
     }
+
     &.btn-flex{
         display: flex;
-        justify-content: space-between;
+        justify-content: flex-start;
+        .btn-vermas:first-child{
+            margin-right: 1rem;
+        }
     }
-    input[type="submit"],
+    input[type="submit"]{
+        @include btn($vidaloca, $white);
+    }
     .btn-vermas{
-        background-color: $scorpion;
-        border: 2px solid $scorpion;
-        color: #fff;
-        cursor: pointer;
-        min-width: 100px;
-        outline: 2px solid #fff;
-        outline-offset: -4px;
-        display: inline-block;
-        text-align: center;
-        text-decoration: none;
+        @include btn($scorpion, $white);
+        margin-left: .5rem;
+    }
+    .btn-atras{
+        @include btn($monza, $white);
     }
 }
+
+

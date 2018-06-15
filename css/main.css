@@ -27,17 +27,37 @@ body {
   /* @media only screen and (min-width: 1024px){
      max-width: 1024px;
   } */
-  min-height: calc(100vh - 200px); }
+  min-height: calc(100vh - 200px);
+  /*Platos*/ }
   .admin-wrapper .platos-wrapper .platos-lista {
     list-style: none;
-    padding: 0; }
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap; }
     .admin-wrapper .platos-wrapper .platos-lista .platos-lista-item {
-      border-bottom: 1px solid #919191;
-      padding: 1rem 0; }
-      .admin-wrapper .platos-wrapper .platos-lista .platos-lista-item p {
-        margin-bottom: 0; }
-      .admin-wrapper .platos-wrapper .platos-lista .platos-lista-item:last-child {
-        border-bottom: none; }
+      padding: 1rem 0;
+      display: flex;
+      flex-direction: column;
+      width: 33.33%;
+      min-width: 300px; }
+      @media only screen and (max-width: 678px) {
+        .admin-wrapper .platos-wrapper .platos-lista .platos-lista-item {
+          margin: auto;
+          width: 100%; } }
+      .admin-wrapper .platos-wrapper .platos-lista .platos-lista-item .lista-item-wrapper {
+        width: 95%;
+        margin: auto;
+        max-width: 500px;
+        margin: .5rem auto; }
+        .admin-wrapper .platos-wrapper .platos-lista .platos-lista-item .lista-item-wrapper .image {
+          width: 100%;
+          margin: auto; }
+          .admin-wrapper .platos-wrapper .platos-lista .platos-lista-item .lista-item-wrapper .image img {
+            width: 100%;
+            height: auto;
+            max-width: 100%; }
+        .admin-wrapper .platos-wrapper .platos-lista .platos-lista-item .lista-item-wrapper p {
+          margin-bottom: 0; }
 
 /*Formulario*/
 .form-group .relative-element label {
@@ -45,27 +65,53 @@ body {
   color: #606060; }
 .form-group .relative-element input:not([type="file"]) {
   width: 100%;
-  border: 2px solid #606060; }
+  border: 1px solid #606060; }
   .form-group .relative-element input:not([type="file"]):focus {
     outline: none; }
 .form-group .relative-element textarea {
   resize: none;
   width: 100%;
   height: 150px;
-  border: 2px solid #606060; }
+  border: 1px solid #606060; }
   .form-group .relative-element textarea:focus {
     outline: none; }
+.form-group .relative-element.img-wrapper {
+  margin: 1rem 0; }
 .form-group.btn-flex {
   display: flex;
-  justify-content: space-between; }
-.form-group input[type="submit"],
+  justify-content: flex-start; }
+  .form-group.btn-flex .btn-vermas:first-child {
+    margin-right: 1rem; }
+.form-group input[type="submit"] {
+  background-color: #4c851f;
+  border: 2px solid #4c851f;
+  color: #ffffff;
+  cursor: pointer;
+  min-width: 100px;
+  outline: 2px solid #ffffff;
+  outline-offset: -4px;
+  display: inline-block;
+  text-align: center;
+  text-decoration: none; }
 .form-group .btn-vermas {
   background-color: #606060;
   border: 2px solid #606060;
-  color: #fff;
+  color: #ffffff;
   cursor: pointer;
   min-width: 100px;
-  outline: 2px solid #fff;
+  outline: 2px solid #ffffff;
+  outline-offset: -4px;
+  display: inline-block;
+  text-align: center;
+  text-decoration: none;
+  margin-left: .5rem; }
+.form-group .btn-atras {
+  background-color: #dc0028;
+  border: 2px solid #dc0028;
+  color: #ffffff;
+  cursor: pointer;
+  min-width: 100px;
+  outline: 2px solid #ffffff;
   outline-offset: -4px;
   display: inline-block;
   text-align: center;

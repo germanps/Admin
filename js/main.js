@@ -30,19 +30,18 @@ var imprimirPlatos = function(){
         //console.log(snapshot.val());
         var listadoPlatos = `<ul class="platos-lista">`
         snapshot.forEach(plato => {
-            let image = plato.val().direccion;
-            if (image == undefined) {
-                image = "#";
-            }
-           listadoPlatos += `<li class="platos-lista-item">                         
-                                <h4 class="title">${plato.val().nombre}</h4>
-                                <div class="image">
-                                    <img src="${image}">
-                                </div>
-                                <div class="datos-adicionales">
-                                    <p class="descripcion">${plato.val().descripcion}</p>
-                                    <p class="precio">${plato.val().precio}</p>
-                                    <p class="cantidad">${plato.val().cantidad}</p>
+            let platoKey = plato.key;
+           listadoPlatos += `<li class="platos-lista-item" key="${platoKey}">
+                                <div class="lista-item-wrapper">                         
+                                    <p class="title">${plato.val().nombre}</p>
+                                    <div class="image">
+                                        <img src="img/cat.png" alt="imagen del plato">
+                                    </div>
+                                    <div class="datos-adicionales">
+                                        <p class="descripcion">${plato.val().descripcion}</p>
+                                        <p class="precio">Precio: ${plato.val().precio}</p>
+                                        <p class="cantidad">Cantidad: ${plato.val().cantidad}</p>
+                                    </div>
                                 </div>
                             </li> `
            //console.log(plato.key);
@@ -90,25 +89,30 @@ function visualizarImagen(){
       preview.style.display = 'block';
    }
    if (archivo) {
-      lector.readAsDataURL(archivo);
-      //subir al storage
-      var subirImagen = storageRef.child('platos/' + archivo.name).put(archivo);
-      subirImagen.on('state_changed', function(snapshot){
-         //indica los cambios en la carga del archivo
-
-      }, function(error){
-         //en caso de que haya errores
-         console.log('error en la carga de la imagen: ' + error)
-      }, function(){
-         //carga exitosa(obtener la dirección de la imagen
-         subirImagen.snapshot.ref.getDownloadURL()
-            .then(function(downloadURL){
-               console.log(downloadURL);
-               document.getElementById('direccionImagen').value = downloadURL;
-            })
-         //console.log(subirImagen.snapshot.downloadURL);
-      })
-   }else{
-      preview.src = "";
+       lector.readAsDataURL(archivo);
    }
+
+}
+
+function subirImagen(){
+    console.log('subiendo...');
+    let archivo = document.querySelector('input[type="file"]').files[0];
+    if (archivo) {
+        //subir al storage
+        var subirImagen = storageRef.child('platos/' + archivo.name).put(archivo);
+        subirImagen.on('state_changed', function(snapshot){
+           //indica los cambios en la carga del archivo
+  
+        }, function(error){
+           //en caso de que haya errores
+           console.log('error en la carga de la imagen: ' + error)
+        }, function(){
+           //carga exitosa(obtener la dirección de la imagen
+           subirImagen.snapshot.ref.getDownloadURL()
+              .then(function(downloadURL){
+                 console.log(downloadURL);
+                 document.getElementById('direccionImagen').value = downloadURL;
+              })
+        })
+     }
 }
