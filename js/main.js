@@ -42,6 +42,7 @@ var imprimirPlatos = function(){
                                         <p class="precio">Precio: ${plato.val().precio}</p>
                                         <p class="cantidad">Cantidad: ${plato.val().cantidad}</p>
                                     </div>
+                                    <button id="${plato.key}" onclick="eliminarPlatos(this.id, this.parentNode)">Eliminar</button>
                                 </div>
                             </li> `
            //console.log(plato.key);
@@ -56,20 +57,49 @@ var imprimirPlatos = function(){
 
 
 //3. Eliminar Platos
+var eliminarPlatos = function(id,item){
+    let rutaImagen = item.querySelector('.image img').src;
+    console.log(rutaImagen);
+    console.log(rutaImagen.length);
+    console.log(rutaImagen.slice(rutaImagen.length, rutaImagen.indexOf('/')));
 
+    console.log(id);
+    let imgRef = storageRef.child("platos/");
+    console.log(imgRef);
+    /* imgRef.delete()
+        .then( () => {
+            console.log("imagen borrada!")
+        })
+        .catch( (error) => {
+            console.log("imagen NO borrada! : " + error)
+        }) */
+    /* database.ref('alimentos/' + id).remove()
+        .then( () => {
+            alert('Plato eliminado');
+            console.log('Plato eliminado');
+        })
+        .catch( (error) => {
+            console.log('Error: No se puedo borrar el item');
+        }) */
+}
 
 
 
 //4. Funciones
 function enviaDatos(e){
-   console.log('entra');
    let nombre = document.getElementById('nombre').value;
    let desc = document.getElementById('descripcion').value;
    let precio = document.getElementById('precio').value;
    let imagen = document.getElementById('direccionImagen').value;
    let submit = document.querySelector('[type="submit"]');
 
-   ingresarPlato(nombre, desc, precio, imagen);
+   try {
+        ingresarPlato(nombre, desc, precio, imagen);
+        alert("Se agregó un nuevo item");
+   } catch (error) {
+       alert("Error al agregar el item");
+   }
+  
 }
 
 
@@ -107,7 +137,7 @@ function subirImagen(){
            //en caso de que haya errores
            console.log('error en la carga de la imagen: ' + error)
         }, function(){
-           //carga exitosa(obtener la dirección de la imagen
+           //carga exitosa(obtener la dirección de la imagen)
            subirImagen.snapshot.ref.getDownloadURL()
               .then(function(downloadURL){
                  console.log(downloadURL);
