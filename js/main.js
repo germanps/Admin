@@ -9,6 +9,22 @@ var config = {
 };
 firebase.initializeApp(config);
 
+// 0. Autentificación
+var ingresar = function(){
+
+    var email = document.getElementById('correo').value;
+    var password = document.getElementById('pass').value;
+    firebase.auth().signInWithEmailAndPassword(email, password)
+    .then( () => {
+        console.log('Acceso correcto');
+    })
+    .catch(function(error) {
+        // Handle Errors here.
+        var errorCode = error.code;
+        var errorMessage = error.message;
+        console.log('Error en el acceso' + errorCode + errorMessage);
+    });
+}
 
 // 1. Crear Platos
 var database = firebase.database();
