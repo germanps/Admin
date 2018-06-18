@@ -11,12 +11,12 @@ firebase.initializeApp(config);
 
 // 0. Autentificación
 var ingresar = function(){
-
     var email = document.getElementById('correo').value;
     var password = document.getElementById('pass').value;
     firebase.auth().signInWithEmailAndPassword(email, password)
     .then( () => {
         console.log('Acceso correcto');
+        window.location = "admin_add.html";
     })
     .catch(function(error) {
         // Handle Errors here.
@@ -25,6 +25,23 @@ var ingresar = function(){
         console.log('Error en el acceso' + errorCode + errorMessage);
     });
 }
+
+// 0.1 Observador del estado del usuario (auth)
+firebase.auth().onAuthStateChanged(function(user) {
+    if (user) {
+        // User is signed in.
+        console.log('Si estás autorizado');
+    } else {
+        // No user is signed in.
+        //window.location = "index.html";
+        console.log('No estas autorizado');
+        if(window.location.pathname !== "/index.html"){
+            window.location = "index.html";
+        }
+    }
+});
+
+
 
 // 1. Crear Platos
 var database = firebase.database();
