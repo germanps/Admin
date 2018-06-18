@@ -59,30 +59,27 @@ var imprimirPlatos = function(){
 //3. Eliminar Platos
 var eliminarPlatos = function(id,item){
     let rutaImagen = item.querySelector('.image img').src;
-    console.log(rutaImagen);
-    console.log(rutaImagen.length);
-    console.log(rutaImagen.slice(rutaImagen.length, rutaImagen.indexOf('/')));
+    let imgRuta = rutaImagen.split('/');
+    imgRuta = imgRuta[imgRuta.length-1];
 
-    console.log(id);
-    let imgRef = storageRef.child("platos/");
-    console.log(imgRef);
-    /* imgRef.delete()
+    let imgRef = storageRef.child("platos/" + imgRuta);
+
+    imgRef.delete()
         .then( () => {
             console.log("imagen borrada!")
         })
         .catch( (error) => {
             console.log("imagen NO borrada! : " + error)
-        }) */
-    /* database.ref('alimentos/' + id).remove()
+        })
+    database.ref('alimentos/' + id).remove()
         .then( () => {
             alert('Plato eliminado');
             console.log('Plato eliminado');
         })
         .catch( (error) => {
             console.log('Error: No se puedo borrar el item');
-        }) */
+        })
 }
-
 
 
 //4. Funciones
