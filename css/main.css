@@ -58,6 +58,14 @@ body {
             max-width: 100%; }
         .admin-wrapper .platos-wrapper .platos-lista .platos-lista-item .lista-item-wrapper p {
           margin-bottom: 0; }
+  .admin-wrapper .intro-app {
+    width: 100%; }
+    @media only screen and (min-width: 768px) {
+      .admin-wrapper .intro-app {
+        width: 768px;
+        margin: auto; } }
+    .admin-wrapper .intro-app .btn-flex .btn-vermas {
+      margin: 0; }
 
 /*Formulario*/
 .form-group .relative-element label {
@@ -82,6 +90,8 @@ body {
   justify-content: flex-start; }
   .form-group.btn-flex .btn-vermas:first-child {
     margin-right: 1rem; }
+  .form-group.btn-flex.btn-bw {
+    justify-content: space-between; }
 .form-group input[type="submit"] {
   background-color: #4c851f;
   border: 2px solid #4c851f;

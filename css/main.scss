@@ -98,6 +98,20 @@ body{
             }
         } 
    }
+   .intro-app{
+       width: 100%;
+       @media only screen and(min-width: 768px){
+        &{
+            width: 768px;
+            margin: auto;
+        }
+       }
+       .btn-flex{
+           .btn-vermas{
+               margin: 0;
+           }
+       }
+   }
 }
 
 /*Formulario*/
@@ -138,6 +152,9 @@ body{
         justify-content: flex-start;
         .btn-vermas:first-child{
             margin-right: 1rem;
+        }
+        &.btn-bw{
+            justify-content: space-between;
         }
     }
     input[type="submit"]{
