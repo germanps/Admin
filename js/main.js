@@ -35,13 +35,22 @@ firebase.auth().onAuthStateChanged(function(user) {
         // No user is signed in.
         //window.location = "index.html";
         console.log('No estas autorizado');
-        if(window.location.pathname !== "/index.html"){
+        if(window.location.pathname != "/index.html"){
             window.location = "index.html";
         }
     }
 });
 
-
+// 0.2 salir de sesión
+var eliminarSesion = function(){
+    firebase.auth().signOut().then(function() {
+        // Sign-out successful.
+        console.log('Sesion terminada');
+      }).catch(function(error) {
+        // An error happened.
+        console.log('Error en terminar sesion:' + error);
+      });
+}
 
 // 1. Crear Platos
 var database = firebase.database();
@@ -58,9 +67,13 @@ var ingresarPlato = function(pNombre, pDescripcion, pPrecio, pdireccion){
 
 // 2. Leer Platos
 var imprimirPlatos = function(){
+    
     var query = database.ref('alimentos');
+   
+        console.log(query);
+   
     query.on('value', function(snapshot){
-        //console.log(snapshot.val());
+        console.log(snapshot.val());
         var listadoPlatos = `<ul class="platos-lista">`
         snapshot.forEach(plato => {
             let platoKey = plato.key;

@@ -41,6 +41,19 @@ body{
 .header{
    padding: 1rem 0;
    text-align: center; 
+   display: flex;
+   align-items: center;
+   justify-content: space-between;
+
+   h4{
+       width: calc(100% - 100px);
+   }
+   .cerrar-sesion{
+    color: $monza;
+    font-size: 12px;
+    text-decoration: none;
+    display: inline-block;
+   }
 }
 .admin-wrapper{
    width: 100%;

@@ -17,7 +17,17 @@ body {
 
 .header {
   padding: 1rem 0;
-  text-align: center; }
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: space-between; }
+  .header h4 {
+    width: calc(100% - 100px); }
+  .header .cerrar-sesion {
+    color: #dc0028;
+    font-size: 12px;
+    text-decoration: none;
+    display: inline-block; }
 
 .admin-wrapper {
   width: 100%;
