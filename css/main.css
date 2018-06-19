@@ -68,6 +68,11 @@ body {
             max-width: 100%; }
         .admin-wrapper .platos-wrapper .platos-lista .platos-lista-item .lista-item-wrapper p {
           margin-bottom: 0; }
+      .admin-wrapper .platos-wrapper .platos-lista .platos-lista-item .prueba-imagen {
+        width: 350px;
+        height: 350px;
+        background-size: cover;
+        background-position: center center; }
   .admin-wrapper .intro-app {
     width: 100%; }
     @media only screen and (min-width: 768px) {

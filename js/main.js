@@ -86,7 +86,7 @@ var imprimirPlatos = function(){
                                 <div class="lista-item-wrapper">                         
                                     <p class="title">${plato.val().nombre}</p>
                                     <div class="image">
-                                        <img title="${plato.val().nombreImagen}" src="${plato.val().direccion}" alt="imagen del plato">
+                                        <img title="${plato.val().nombreImagen}" src="img/cat.png" alt="imagen del plato">
                                     </div>
                                     <div class="datos-adicionales">
                                         <p class="descripcion">${plato.val().descripcion}</p>
@@ -95,6 +95,7 @@ var imprimirPlatos = function(){
                                     </div>
                                     <button id="${plato.key}" onclick="eliminarPlatos(this.id, this.parentNode)">Eliminar</button>
                                 </div>
+                                <div class="prueba-imagen" style="background-image: url(${plato.val().direccion})"></div>
                             </li> `
         });
         listadoPlatos += `</ul>`
