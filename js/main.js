@@ -54,14 +54,20 @@ var eliminarSesion = function(){
 
 // 1. Crear Platos
 var database = firebase.database();
-var ingresarPlato = function(pNombre, pDescripcion, pPrecio, pdireccion){
+var ingresarPlato = function(pNombre, pDescripcion, pPrecio, pcantidad, pdireccion, pimagenlocal){
    database.ref('alimentos').push({
       nombre: pNombre,
       descripcion: pDescripcion,
       precio: pPrecio,
-      cantidad: 0,
-      direccion: pdireccion
-   })
+      cantidad: pcantidad,
+      direccion: pdireccion,
+      nombreImagen: pimagenlocal
+   }).then(function(){
+       alert('Se agregó el item "desde la promise"');
+       window.location = "admin_add.html";
+   }).catch(function(){
+       alert('Error al agregar el item "desde el catch de la promesa"');
+   });
 }
 
 
@@ -69,8 +75,7 @@ var ingresarPlato = function(pNombre, pDescripcion, pPrecio, pdireccion){
 var imprimirPlatos = function(){
     
     var query = database.ref('alimentos');
-   
-        console.log(query);
+    console.log(query);
    
     query.on('value', function(snapshot){
         console.log(snapshot.val());
@@ -81,7 +86,7 @@ var imprimirPlatos = function(){
                                 <div class="lista-item-wrapper">                         
                                     <p class="title">${plato.val().nombre}</p>
                                     <div class="image">
-                                        <img src="img/cat.png" alt="imagen del plato">
+                                        <img title="${plato.val().nombreImagen}" src="${plato.val().direccion}" alt="imagen del plato">
                                     </div>
                                     <div class="datos-adicionales">
                                         <p class="descripcion">${plato.val().descripcion}</p>
@@ -91,8 +96,6 @@ var imprimirPlatos = function(){
                                     <button id="${plato.key}" onclick="eliminarPlatos(this.id, this.parentNode)">Eliminar</button>
                                 </div>
                             </li> `
-           //console.log(plato.key);
-           //console.log(plato.val());
         });
         listadoPlatos += `</ul>`
         const containerPlatos = document.querySelector('.platos-wrapper');
@@ -104,11 +107,10 @@ var imprimirPlatos = function(){
 
 //3. Eliminar Platos
 var eliminarPlatos = function(id,item){
-    let rutaImagen = item.querySelector('.image img').src;
-    let imgRuta = rutaImagen.split('/');
-    imgRuta = imgRuta[imgRuta.length-1];
-
-    let imgRef = storageRef.child("platos/" + imgRuta);
+    let rutaImagen = item.querySelector('.image img').getAttribute("title");
+    console.log(rutaImagen);
+    let imgRef = storageRef.child("platos/" + rutaImagen);
+    console.log(imgRef);
 
     imgRef.delete()
         .then( () => {
@@ -129,20 +131,19 @@ var eliminarPlatos = function(id,item){
 
 
 //4. Funciones
-function enviaDatos(e){
+function enviaDatos(event){
+    event.preventDefault();
    let nombre = document.getElementById('nombre').value;
    let desc = document.getElementById('descripcion').value;
    let precio = document.getElementById('precio').value;
+   let cantidad = document.getElementById('cantidad').value;
    let imagen = document.getElementById('direccionImagen').value;
+   let imagenLocal = document.getElementById('nombreImagen').value;
    let submit = document.querySelector('[type="submit"]');
 
-   try {
-        ingresarPlato(nombre, desc, precio, imagen);
-        alert("Se agregó un nuevo item");
-   } catch (error) {
-       alert("Error al agregar el item");
-   }
-  
+    ingresarPlato(nombre, desc, precio, cantidad, imagen, imagenLocal);
+
+   return false;
 }
 
 
@@ -170,6 +171,7 @@ function visualizarImagen(){
 function subirImagen(){
     console.log('subiendo...');
     let archivo = document.querySelector('input[type="file"]').files[0];
+    console.log(archivo.name);
     if (archivo) {
         //subir al storage
         var subirImagen = storageRef.child('platos/' + archivo.name).put(archivo);
@@ -180,12 +182,13 @@ function subirImagen(){
            //en caso de que haya errores
            console.log('error en la carga de la imagen: ' + error)
         }, function(){
-           //carga exitosa(obtener la dirección de la imagen)
+           //carga exitosa(obtener la dirección de la imagen y nombre de la imagen)
            subirImagen.snapshot.ref.getDownloadURL()
               .then(function(downloadURL){
                  console.log(downloadURL);
                  document.getElementById('direccionImagen').value = downloadURL;
+                 document.getElementById('nombreImagen').value = archivo.name;
               })
         })
-     }
+     } 
 }

@@ -26,7 +26,7 @@
             <div class="row">
                 <div class="col-md">
                     <!-- Formulario para ingresar el nombre, descripción y precio del plato -->
-                    <form onsubmit="enviaDatos()">
+                    <form onsubmit="return enviaDatos(event)">
                         <div class="form-group">
                             <div class="relative-element">
                                 <label for="nombre">Nombre:</label> 
@@ -47,8 +47,20 @@
                         </div>
                         <div class="form-group">
                             <div class="relative-element">
+                                <label for="cantidad">Cantidad:</label> 
+                                <input id="cantidad" type="text" required>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="relative-element">
                                 <label for="direccionImagen">Dirección imagen:</label> 
-                                <input id="direccionImagen" type="text" required>
+                                <input id="direccionImagen" type="text" required disabled>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="relative-element">
+                                <label for="nombreImagen">Nombre imagen:</label> 
+                                <input id="nombreImagen" type="text" required disabled>
                             </div>
                         </div>
                         <div class="form-group btn-flex btn-bw">
