@@ -22,12 +22,15 @@ body {
   align-items: center;
   justify-content: space-between; }
   .header h4 {
-    width: calc(100% - 100px); }
-  .header .cerrar-sesion {
+    width: calc(100% - 200px); }
+  .header a {
     color: #dc0028;
     font-size: 12px;
     text-decoration: none;
     display: inline-block; }
+    .header a:first-child {
+      color: #4c851f;
+      font-weight: bold; }
 
 .tab-container {
   width: 150px;
