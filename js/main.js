@@ -85,9 +85,8 @@ var imprimirPlatos = function(){
            listadoPlatos += `<li class="platos-lista-item" key="${platoKey}">
                                 <div class="lista-item-wrapper">                         
                                     <p class="title">${plato.val().nombre}</p>
-                                    <div class="image">
-                                        <img title="${plato.val().nombreImagen}" src="img/cat.png" alt="imagen del plato">
-                                    </div>
+                                    
+                                    <div class="prueba-imagen" style="background-image: url(${plato.val().direccion})" data-img="${plato.val().nombreImagen}></div>
                                     <div class="datos-adicionales">
                                         <p class="descripcion">${plato.val().descripcion}</p>
                                         <p class="precio">Precio: ${plato.val().precio}</p>
@@ -95,7 +94,7 @@ var imprimirPlatos = function(){
                                     </div>
                                     <button id="${plato.key}" onclick="eliminarPlatos(this.id, this.parentNode)">Eliminar</button>
                                 </div>
-                                <div class="prueba-imagen" style="background-image: url(${plato.val().direccion})"></div>
+                                
                             </li> `
         });
         listadoPlatos += `</ul>`
@@ -106,9 +105,10 @@ var imprimirPlatos = function(){
 
 
 
+
 //3. Eliminar Platos
 var eliminarPlatos = function(id,item){
-    let rutaImagen = item.querySelector('.image img').getAttribute("title");
+    let rutaImagen = item.querySelector('.image img').getAttribute("data-img");
     console.log(rutaImagen);
     let imgRef = storageRef.child("platos/" + rutaImagen);
     console.log(imgRef);
