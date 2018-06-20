@@ -23,6 +23,8 @@ body {
   justify-content: space-between; }
   .header h4 {
     width: calc(100% - 200px); }
+    .header h4.home {
+      width: 100%; }
   .header a {
     color: #dc0028;
     font-size: 12px;
