@@ -55,6 +55,16 @@ body{
     display: inline-block;
    }
 }
+.tab-container{
+    width: 150px;
+    margin: 1rem 0;
+    a{
+        color: $monza;
+        &:hover{
+            text-decoration: none;
+        }
+    }
+}
 .admin-wrapper{
    width: 100%;
    margin: auto;
@@ -133,6 +143,7 @@ body{
        }
    }
 }
+
 
 /*Formulario*/
 .form-group{
